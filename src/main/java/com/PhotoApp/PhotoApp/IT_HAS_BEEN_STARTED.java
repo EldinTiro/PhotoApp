@@ -17,4 +17,9 @@ public class IT_HAS_BEEN_STARTED {
 		return new BCryptPasswordEncoder();
 	}
 
+	@Bean
+	public SpringApplicationsContext springApplicationsContext() {
+		return new SpringApplicationsContext();
+	}
+
 }

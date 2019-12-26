@@ -1,4 +1,4 @@
-package com.PhotoApp.PhotoApp;
+package com.PhotoApp.PhotoApp.io.repositiories;
 
 import com.PhotoApp.PhotoApp.io.entity.UserEntity;
 import org.springframework.data.repository.CrudRepository;
