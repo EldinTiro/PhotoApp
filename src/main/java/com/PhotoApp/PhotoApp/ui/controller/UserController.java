@@ -7,7 +7,6 @@ import com.PhotoApp.PhotoApp.ui.model.response.UserRest;
 import com.PhotoApp.PhotoApp.userservice.IUserService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,26 +24,8 @@ public class UserController {
     IUserService userService;
 
     @GetMapping
-    public String getUsers(@RequestParam(value = "page", defaultValue = "1", required = false) int page,
-                           @RequestParam(value = "limit", defaultValue = "50") int limit,
-                           @RequestParam(value = "sort", required = false) String sort) {
-        return "get users was called with page = " + page + " and limit = " + limit;
-    }
-
-    @GetMapping(path = "/{userId}",
-            produces = {
-                    MediaType.APPLICATION_XML_VALUE,
-                    MediaType.APPLICATION_JSON_VALUE
-            })
-    public ResponseEntity<UserRest> getUser(@PathVariable String userId) {
-
-        //if(true) throw new UserServiceException("A user service exception is thrown");
-
-        if (users.containsKey(userId))
-            return new ResponseEntity<>(users.get(userId), HttpStatus.OK);
-        else
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-
+    public String getUser() {
+        return "get users was called!";
     }
 
     @PostMapping(consumes = {
