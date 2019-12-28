@@ -43,7 +43,7 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
             //dekripcija tokena, note - ako se koristio za enkripciju jedan TOKEN_SECRET, isti se mora koristiti i za dekripciju
             //Jwts - Jason web token
             String user = Jwts.parser()
-                    .setSigningKey(SecurityConstants.TOKEN_SECRET)
+                    .setSigningKey(SecurityConstants.getTokenSecret())
                     .parseClaimsJws(token)
                     .getBody()
                     .getSubject();

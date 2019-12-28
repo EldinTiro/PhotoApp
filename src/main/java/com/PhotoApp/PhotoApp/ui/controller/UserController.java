@@ -23,9 +23,17 @@ public class UserController {
     @Autowired
     IUserService userService;
 
-    @GetMapping
-    public String getUser() {
-        return "get users was called!";
+    @GetMapping(path = "/{id}",
+            produces = {MediaType.APPLICATION_XML_VALUE,
+                    MediaType.APPLICATION_JSON_VALUE}
+    )
+    public UserRest getUser(@PathVariable String id) {
+
+        UserRest returnValue = new UserRest();
+        UserDto userDto = userService.getUserByUserId(id);
+        BeanUtils.copyProperties(userDto, returnValue);
+
+        return returnValue;
     }
 
     @PostMapping(consumes = {
@@ -47,8 +55,6 @@ public class UserController {
         BeanUtils.copyProperties(createdUser,returnedValue);
 
         return returnedValue;
-
-
     }
 
     @PutMapping(path = "/{userId}",

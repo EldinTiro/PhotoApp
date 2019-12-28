@@ -1,5 +1,6 @@
 package com.PhotoApp.PhotoApp;
 
+import com.PhotoApp.PhotoApp.security.AppProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -20,6 +21,11 @@ public class IT_HAS_BEEN_STARTED {
 	@Bean
 	public SpringApplicationsContext springApplicationsContext() {
 		return new SpringApplicationsContext();
+	}
+
+	@Bean(name = "AppProperties")
+	public AppProperties getAppProperties() {
+		return new AppProperties();
 	}
 
 }
